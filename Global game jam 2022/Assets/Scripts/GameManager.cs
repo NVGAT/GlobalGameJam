@@ -44,17 +44,31 @@ public class GameManager : MonoBehaviour
     {
         //Plays the animation on the background
         backgroundAnim.Play("SwitchToDay");
-        
+
         //Activates all day objects
         foreach (GameObject dayPlatform in dayItems)
         {
-            dayPlatform.gameObject.SetActive(true);
+            try
+            {
+                dayPlatform.gameObject.SetActive(true);
+            }
+            catch (MissingReferenceException)
+            {
+                //did this so i dont have to cope with the errors :)
+            }
         }
 
         //Deactivates night objects
         foreach (GameObject nightPlatform in nightItems)
         {
-            nightPlatform.gameObject.SetActive(false);
+            try
+            {
+                nightPlatform.gameObject.SetActive(false);
+            }
+            catch (MissingReferenceException)
+            {
+
+            }
         }
     }
 
@@ -62,17 +76,31 @@ public class GameManager : MonoBehaviour
     {
         //Plays the background animation
         backgroundAnim.Play("SwitchToNight");
-        
+
         //Activates all night objects
         foreach (GameObject nightPlatform in nightItems)
         {
-            nightPlatform.gameObject.SetActive(true);
+            try
+            {
+                nightPlatform.gameObject.SetActive(true);
+            }
+            catch (MissingReferenceException)
+            {
+
+            }
         }
 
         //Deactivates all day objects
         foreach (GameObject dayPlatform in dayItems)
         {
-            dayPlatform.gameObject.SetActive(false);
+            try
+            {
+                dayPlatform.gameObject.SetActive(false);
+            }
+            catch (MissingReferenceException)
+            {
+
+            }
         }
     }
 }

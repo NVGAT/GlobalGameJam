@@ -147,16 +147,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db390f51357c7c64e90561f637ff4691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 3115194235586978711}
+  rb: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  anim: {fileID: 3115194235586978713}
+  anim: {fileID: 0}
   movementSpeed: 50
   jumpForce: 850
   distance: 2
-  input: 0
+  inputX: 0
+  inputY: 0
   speedCap: 6
+  dashForce: 10
+  dashDuration: 0.2
+  dashCooldown: 2
+  verticalDashMultiplier: 100
+  isDashing: 0
   canMove: 1
 --- !u!114 &3115194235586978710
 MonoBehaviour:

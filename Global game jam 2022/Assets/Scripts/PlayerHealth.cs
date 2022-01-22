@@ -61,8 +61,16 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MeleeEnemy"))
         {
-            //If we collide with an enemy, we lose a heart
-            health--;
+            if (movementScript.isDashing)
+            {
+                //If we're dashing we pull an epic uno reverse card moment and destroy the enemy
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                //If we're not dashing we can't pull the epic reverse uno and we have to die. Sad gamer moment :(
+                health = 0;
+            }
         }
     }
 }
