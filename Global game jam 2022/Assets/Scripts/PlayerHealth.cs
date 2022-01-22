@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
                     uiHearts[i].gameObject.SetActive(false);
                 }
                 uiManager.GameOver();
-                movementScript.canMove = false;
+                gameObject.SetActive(false);
                 break;
             case 1:
                 uiHearts[0].gameObject.SetActive(true);
