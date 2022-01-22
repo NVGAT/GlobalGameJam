@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
-    
+
     void AnimatePlyer()
     {
         //If the input is more or less than 0, we animate the player

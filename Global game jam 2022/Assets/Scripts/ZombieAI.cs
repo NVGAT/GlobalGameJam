@@ -12,7 +12,7 @@ public class ZombieAI : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) < minNoticeDistance)
         {
             //If we're close enough to the player, we can start running towards him.
-            transform.position = Vector2.MoveTowards(transform.position, target.position, 
+            transform.position = Vector2.MoveTowards(transform.position, target.position,
                 movementSpeed * Time.deltaTime);
         }
     }
@@ -26,8 +26,10 @@ public class ZombieAI : MonoBehaviour
         transform1.localScale = new Vector3(scaleX, 10f, 10f);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("DeathTrigger")) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("DeathTrigger"))
+        {
             Destroy(gameObject);
         }
     }
