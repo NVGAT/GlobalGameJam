@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource dashSource;
+    [SerializeField] private CameraShake cameraShake;
     [Header("Values")]
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
@@ -23,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
     private static readonly int IsWalking = Animator.StringToHash("isWalking");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
+
+    private void Start()
+    {
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+    }
 
     private void Update()
     {
@@ -75,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
+        StartCoroutine(cameraShake.Shake(.15f, .4f));
+        dashSource.Play();
         //We set the dashing bool to be true, reset the dash timer and store the pre-dash velocity in a Vector2
         isDashing = true;
         dashTimer = 0;
@@ -82,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         //We calculate the post-dash velocity. The formula is input*dashForce for X and (input*force)*verticalDashMultiplier for Y
         Vector2 dashVelocity = new Vector2(dashForce * inputX, (dashForce * inputY) * verticalDashMultiplier);
         rb.AddForce(dashVelocity);
-        //Resets our velocity after the dash
+        //Resets the player's velocity after the dash
         StartCoroutine(SetVelocityAfterTime(dashDuration, originalVelocity));
 
     }
