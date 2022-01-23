@@ -48,6 +48,11 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");

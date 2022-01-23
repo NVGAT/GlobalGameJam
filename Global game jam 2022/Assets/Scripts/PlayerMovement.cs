@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -35,7 +36,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        dashFrames.transform.position = Vector3.Lerp(dashFrames.transform.position, transform.position, dashFrameFollowSpeed);
+        try
+        {
+            dashFrames.transform.position = Vector3.Lerp(dashFrames.transform.position, transform.position, dashFrameFollowSpeed);
+        }
+        catch (NullReferenceException)
+        {
+            //the only way i get rid of the errors in the inspector :)
+        }
+        catch (UnassignedReferenceException)
+        {
+            //inspector errors :)
+        }
     }
 
     private void Update()

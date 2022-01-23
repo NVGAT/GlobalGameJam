@@ -29,7 +29,7 @@ public class MusicPlayer : MonoBehaviour
         switch (type)
         {
             case PlayerType.MENU:
-                if (scene.name == "Level1")
+                if (scene.name == "Level1" || scene.name == "Credits")
                 {
                     Destroy(gameObject);
                 }
