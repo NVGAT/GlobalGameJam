@@ -3,13 +3,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Components and assignables")]
     [SerializeField] private GameObject[] uiHearts;
     [SerializeField] private PlayerMovement movementScript;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private CameraShake shake;
+
+    [Header("Values")]
     [SerializeField] private int health;
 
     private void Start()
     {
+        shake = Camera.main.GetComponent<CameraShake>();
         movementScript = GetComponent<PlayerMovement>();
     }
 
@@ -68,8 +73,9 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                //If we're not dashing we can't pull the epic reverse uno and we have to die. Sad gamer moment :(
-                health = 0;
+                //If we're not dashing we can't pull the epic reverse uno and we have to take damage :(
+                health -= 1;
+                StartCoroutine(shake.Shake(.15f, .4f));
             }
         }
     }

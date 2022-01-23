@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private AudioSource dashSource;
     [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private GameObject dashFrames;
     [Header("Values")]
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldown;
     [SerializeField] private float verticalDashMultiplier;
+    [SerializeField] private float dashFrameFollowSpeed;
     public bool isDashing;
     private float dashTimer;
     public bool canMove = true;
@@ -29,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
+    }
+
+    private void FixedUpdate()
+    {
+        dashFrames.transform.position = Vector3.Lerp(dashFrames.transform.position, transform.position, dashFrameFollowSpeed);
     }
 
     private void Update()
@@ -82,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
+        dashFrames.SetActive(true);
         StartCoroutine(cameraShake.Shake(.15f, .4f));
         dashSource.Play();
         //We set the dashing bool to be true, reset the dash timer and store the pre-dash velocity in a Vector2
@@ -146,5 +154,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         rb.velocity = velocity;
         isDashing = false;
+        dashFrames.SetActive(false);
     }
 }
