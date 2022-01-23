@@ -154,6 +154,8 @@ MonoBehaviour:
     m_Bits: 256
   anim: {fileID: 3115194235586978713}
   dashSource: {fileID: -5021639038664417403}
+  cameraShake: {fileID: 0}
+  dashFrames: {fileID: 0}
   movementSpeed: 50
   jumpForce: 850
   distance: 2
@@ -164,6 +166,7 @@ MonoBehaviour:
   dashDuration: 0.2
   dashCooldown: 2
   verticalDashMultiplier: 100
+  dashFrameFollowSpeed: 0
   isDashing: 0
   canMove: 1
 --- !u!114 &3115194235586978710
@@ -249,7 +252,7 @@ MonoBehaviour:
   - {x: -0.050371047, y: 0.000004327573, z: 0}
   m_ShapePathHash: 1587864585
   m_Mesh: {fileID: 0}
-  m_InstanceId: 31334
+  m_InstanceId: 42750
 --- !u!95 &3115194235586978713
 Animator:
   serializedVersion: 3
@@ -287,6 +290,7 @@ MonoBehaviour:
   - {fileID: 0}
   movementScript: {fileID: 0}
   uiManager: {fileID: 0}
+  shake: {fileID: 0}
   health: 3
 --- !u!82 &-5021639038664417403
 AudioSource:
@@ -299,7 +303,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 95d6e8d08e8e82298a5b0d0137c1bb26, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

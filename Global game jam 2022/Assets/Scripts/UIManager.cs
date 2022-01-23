@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] slides;
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject gameMusicPlayer;
     private PlayerMovement playerMovement;
     [SerializeField] private int currentSlide;
 
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
             catch (IndexOutOfRangeException)
             {
                 SceneManager.LoadScene("Level1");
+                Instantiate(gameMusicPlayer);
             }
         }
     }
