@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private CameraShake shake;
 
     [Header("Values")]
-    [SerializeField] private int health;
+    public int health;
 
     private void Start()
     {
@@ -69,7 +69,7 @@ public class PlayerHealth : MonoBehaviour
             if (movementScript.isDashing)
             {
                 //If we're dashing we pull an epic uno reverse card moment and destroy the enemy
-                Destroy(other.gameObject);
+                other.gameObject.GetComponent<ZombieAI>().onDeath();
             }
             else
             {

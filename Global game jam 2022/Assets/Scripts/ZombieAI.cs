@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ZombieAI : MonoBehaviour
 {
+    [SerializeField] private GameObject heart;
     [SerializeField] private Transform target;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float minNoticeDistance;
@@ -17,6 +18,13 @@ public class ZombieAI : MonoBehaviour
         }
     }
 
+    public void onDeath()
+    {
+        GameObject Heart = Instantiate(heart, transform.position, heart.transform.rotation);
+        Heart.GetComponent<Heart>().player = target;
+        Destroy(gameObject);
+    }
+
     void FacePlayer()
     {
         //Gets the vector between the player and figures out how it should flip in order to face the player
@@ -30,7 +38,7 @@ public class ZombieAI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DeathTrigger"))
         {
-            Destroy(gameObject);
+            onDeath();
         }
     }
 }
