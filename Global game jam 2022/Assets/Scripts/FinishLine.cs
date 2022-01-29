@@ -12,7 +12,7 @@ public class FinishLine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (SceneManager.GetActiveScene().buildIndex != 11)
+            if (SceneManager.GetActiveScene().buildIndex != 12)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }

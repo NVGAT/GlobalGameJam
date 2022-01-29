@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         //Gets the input direction and adds it to the player's velocity, multiplied by the movement speed
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
-        rb.AddForce(new Vector2(inputX * movementSpeed, 0));
+        rb.AddForce(new Vector2((inputX * movementSpeed) * Time.deltaTime, 0));
         //Velocity cap logic: if the absolute value of the x velocity is above the speed cap, and we're not dashing, we can proceed
         if (Mathf.Abs(rb.velocity.x) > speedCap && !isDashing)
         {
